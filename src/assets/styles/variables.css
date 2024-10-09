@@ -1,0 +1,14 @@
+:root {
+  --Animation_cubic: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --Main: #101828;
+  --Text: #475467;
+  --Gray: #6c717b;
+  --Gray-light: #dadde1;
+  --Gray-100: #f2f4f7;
+  --Button: #e44848;
+  --Button-Hover: #d84343;
+  --Rating: #ffc531;
+  --Badges: #f2f4f7;
+  --Inputs: #f7f7f7;
+  --White: #fff;
+}

@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import RootComponent from './RootComponent.jsx';
-import './index.css';
+import './assets/styles/styles.css';
 
 const environment = import.meta.env.VITE_APP_ENV;
 

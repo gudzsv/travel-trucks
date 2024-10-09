@@ -1,0 +1,34 @@
+.header {
+  border-bottom: 1px solid var(--Badges);
+  background: var(--Inputs);
+  /* width: 100%; */
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  column-gap: 450px;
+  padding: 24px 0;
+}
+
+.headerNavList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 32px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.link {
+  color: var(--Main);
+  transition: color var(--Animation_cubic);
+}
+
+.active {
+  color: var(--Button-Hover);
+}
