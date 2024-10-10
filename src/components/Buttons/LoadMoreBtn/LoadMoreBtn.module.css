@@ -1,0 +1,29 @@
+.loadMoreBtn {
+  display: inline-flex;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 200px;
+  border: 1px solid var(--Gray-light);
+
+  color: var(--Main);
+  background-color: var(--White);
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+
+  margin-bottom: 40px;
+
+  transition: border-color var(--Animation_cubic);
+  align-self: center;
+  min-width: 145px;
+}
+
+.loadMoreBtn:hover {
+  border-color: var(--Button-Hover);
+}

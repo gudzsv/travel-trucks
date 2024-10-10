@@ -1,0 +1,15 @@
+.camperCardFavorite {
+  cursor: pointer;
+  fill: var(--Main);
+}
+
+.camperCardFavorite.isActive {
+  fill: var(--Button);
+}
+
+.camperCardRating {
+  fill: var(--Badges);
+}
+.camperCardRating.isActive {
+  fill: var(--Rating);
+}

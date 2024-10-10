@@ -1,0 +1,25 @@
+.camperEquipment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.camperEquipmentItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background: var(--Badges);
+  mix-blend-mode: multiply;
+
+  color: var(--Main);
+  text-align: center;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: capitalize;
+  cursor: default;
+}

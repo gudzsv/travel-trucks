@@ -1,0 +1,6 @@
+.camperListSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  max-width: 888px;
+}

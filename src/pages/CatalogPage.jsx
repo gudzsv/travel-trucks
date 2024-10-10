@@ -1,5 +1,7 @@
+import Catalog from '../components/Catalog/Catalog.jsx';
+
 const CatalogPage = () => {
-  return <div>CatalogPage</div>;
+  return <Catalog />;
 };
 
 export default CatalogPage;

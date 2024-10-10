@@ -1,5 +1,6 @@
 import sprite from '../../assets/icons/sprite.svg';
 import React from 'react';
+import styles from './Icon.module.css';
 
 const Icon = React.memo(
   ({
@@ -9,17 +10,29 @@ const Icon = React.memo(
     className = '',
     ariaLabel = '',
     role = 'img',
-  }) => (
-    <svg
-      className={className}
-      width={width}
-      height={height}
-      role={role}
-      aria-label={ariaLabel || iconName}
-    >
-      <use xlinkHref={`${sprite}#${iconName}`} href={`${sprite}#${iconName}`} />
-    </svg>
-  )
+    onClick,
+    isActive = false,
+  }) => {
+    const handleClick = () => {
+      onClick();
+    };
+    return (
+      <svg
+        className={`${styles[className]}
+          ${isActive ? styles['isActive'] : null}`}
+        width={width}
+        height={height}
+        role={role}
+        aria-label={ariaLabel || iconName}
+        onClick={handleClick}
+      >
+        <use
+          xlinkHref={`${sprite}#${iconName}`}
+          href={`${sprite}#${iconName}`}
+        />
+      </svg>
+    );
+  }
 );
 
 Icon.displayName = 'Icon';

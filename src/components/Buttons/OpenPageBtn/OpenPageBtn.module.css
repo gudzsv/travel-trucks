@@ -1,0 +1,23 @@
+.buttonStyle {
+  display: flex;
+  padding: 16px 0;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 200px;
+  background-color: var(--Button);
+  color: var(--White);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  min-width: 166px;
+  transition: background-color var(--Animation_cubic);
+  margin-top: 24px;
+}
+
+.buttonStyle:hover {
+  background-color: var(--Button-Hover);
+}
