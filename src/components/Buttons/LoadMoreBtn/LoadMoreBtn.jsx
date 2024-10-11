@@ -1,8 +1,17 @@
 import styles from './LoadMoreBtn.module.css';
-const LoadMoreBtn = ({ children, onClick }) => {
-  const handleClick = () => onClick();
+const LoadMoreBtn = ({ children, onClick, disabled = false }) => {
+  const handleClick = () => {
+    if (!disabled) {
+      onClick();
+    }
+  };
   return (
-    <button className={styles.loadMoreBtn} type="button" onClick={handleClick}>
+    <button
+      className={`${styles.loadMoreBtn} ${disabled ? styles.disabled : ''}`}
+      type="button"
+      onClick={handleClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

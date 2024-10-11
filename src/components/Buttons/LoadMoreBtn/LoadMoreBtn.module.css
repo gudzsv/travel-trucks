@@ -27,3 +27,12 @@
 .loadMoreBtn:hover {
   border-color: var(--Button-Hover);
 }
+
+.disabled {
+  cursor: not-allowed;
+  background-color: var(--Gray-light);
+}
+
+.loadMoreBtn:hover.disabled {
+  border-color: var(--Gray-light);
+}

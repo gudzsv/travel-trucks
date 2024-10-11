@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import Container from '../Container/Container.jsx';
 import styles from './Hero.module.css';
+import OpenPageBtn from '../Buttons/OpenPageBtn/OpenPageBtn.jsx';
 
 const Hero = () => {
   return (
@@ -11,13 +11,13 @@ const Hero = () => {
           <p className={styles.heroText}>
             You can find everything you want in our catalog
           </p>
-          <Link
-            to="/catalog"
-            className={styles.heroBtn}
-            aria-label="View the catalog"
+          <OpenPageBtn
+            className="heroBtn"
+            url={'/catalog'}
+            ariaLabel="View the campers catalog"
           >
             View Now
-          </Link>
+          </OpenPageBtn>
         </div>
       </Container>
     </section>

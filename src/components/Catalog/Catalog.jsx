@@ -6,6 +6,7 @@ import {
   selectLoading,
 } from '../../redux/campers/selectors.js';
 import { fetchCampers } from '../../redux/campers/operations.js';
+import Loader from '../Loader/Loader.jsx';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,11 @@ const Catalog = () => {
 
   useEffect(() => {
     if (!campers || campers.length === 0) {
-      dispatch(fetchCampers({ limit: 2 }));
+      dispatch(fetchCampers());
     }
   }, [dispatch, campers]);
 
-  return loading ? <p>Loading...</p> : <CamperList campers={campers} />;
+  return loading ? <Loader /> : <CamperList campers={campers} />;
 };
 
 export default Catalog;

@@ -25,7 +25,7 @@ const CamperCard = ({ camper }) => {
     TV,
     radio,
     adults,
-    favorite = false,
+    favorite,
   } = camper;
 
   const totalReviews = reviews.length;
@@ -45,7 +45,7 @@ const CamperCard = ({ camper }) => {
         className={styles.camperCardImage}
         loading="lazy"
       />
-      <div>
+      <div className={styles.camperCardContent}>
         <header className={styles.camperCardHeader}>
           <div className={styles.camperCardHeaderTop}>
             <h2 className={styles.camperCardTitle}>{name}</h2>
@@ -96,7 +96,11 @@ const CamperCard = ({ camper }) => {
           radio={radio}
           adults={adults}
         />
-        <OpenPageBtn open="new" url={`/catalog/${id}`}>
+        <OpenPageBtn
+          open="new"
+          url={`/catalog/${id}`}
+          ariaLabel="Open camper details page"
+        >
           Show More
         </OpenPageBtn>
       </div>

@@ -18,8 +18,10 @@
   object-position: center;
 }
 
-.camperCardHeader {
-  /* display: flex; */
+.camperCardContent {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
 }
 
 .camperCardHeaderTop {
@@ -49,11 +51,6 @@
   column-gap: 12px;
 }
 
-.camperCardPrice {
-}
-.camperCardFavorite {
-}
-
 .camperCardHeaderBottom {
   display: flex;
   align-items: center;
@@ -64,10 +61,7 @@
 .camperCardHeaderBottomItem {
   display: flex;
   align-items: center;
-}
-
-.camperCardRating {
-  margin-left: 4px;
+  column-gap: 4px;
 }
 
 .camperCardRating:hover {
@@ -75,11 +69,7 @@
   text-decoration: underline;
 }
 
-.camperCardLocation {
-  margin-left: 4px;
-}
 .camperCardDescription {
-  margin: 24px 0;
   overflow: hidden;
   color: var(--Text);
   text-overflow: ellipsis;

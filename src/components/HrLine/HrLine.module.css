@@ -1,0 +1,6 @@
+.lineHr {
+  border: none;
+  height: 1px;
+  background-color: var(--Gray-light);
+  margin: 24px 0;
+}

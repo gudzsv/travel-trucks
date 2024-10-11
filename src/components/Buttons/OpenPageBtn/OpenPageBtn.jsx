@@ -2,7 +2,13 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './OpenPageBtn.module.css';
 
-const OpenPageBtn = ({ open = 'same', children, url }) => {
+const OpenPageBtn = ({
+  open = 'same',
+  children,
+  url,
+  ariaLabel,
+  className,
+}) => {
   const navigate = useNavigate();
 
   const openInNewTab = useCallback(url => {
@@ -21,9 +27,9 @@ const OpenPageBtn = ({ open = 'same', children, url }) => {
       {open === 'new' && (
         <button
           type="button"
-          className={styles.buttonStyle}
+          className={`${className ? className : styles.buttonStyle}`}
           onClick={() => openInNewTab(url)}
-          aria-label={`Open ${url} in new tab`}
+          aria-label={ariaLabel}
         >
           {children}
         </button>

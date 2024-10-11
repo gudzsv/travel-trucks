@@ -14,7 +14,9 @@ const Icon = React.memo(
     isActive = false,
   }) => {
     const handleClick = () => {
-      onClick();
+      if (onClick) {
+        onClick();
+      }
     };
     return (
       <svg
