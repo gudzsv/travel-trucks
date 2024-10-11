@@ -1,9 +1,9 @@
 import FilterForm from './FilterForm/FilterForm.jsx';
-import VehicleEquipment from './VehicleEquipment/VehicleEquipment.jsx';
+import styles from './Filter.module.css';
 
 const Filter = () => {
   return (
-    <aside>
+    <aside className={styles.aside}>
       <FilterForm />
     </aside>
   );

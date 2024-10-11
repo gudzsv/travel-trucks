@@ -1,12 +1,15 @@
-.buttonStyle {
-  display: inline-block;
+.submitBtn {
+  display: flex;
+  width: 166px;
   padding: 16px 60px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   border-radius: 200px;
   background-color: var(--Button);
-  max-width: 204px;
   transition: background-color var(--Animation_cubic);
 }
 
-.buttonStyle:hover {
+.submitBtn:hover {
   background-color: var(--Button-Hover);
 }

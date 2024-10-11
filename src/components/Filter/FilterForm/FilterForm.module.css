@@ -40,6 +40,13 @@
   fill: var(--Main);
 }
 
+.filterWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
 .filtersTitle {
   color: var(--Text);
   font-family: Inter;
@@ -48,53 +55,4 @@
   font-weight: 500;
   line-height: 1.5;
   margin-top: 40px;
-  margin-bottom: 32px;
-}
-.equipmentWrapper {
-  margin-bottom: 32px;
-}
-
-.equipmentTitle {
-  color: var(--Main);
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.checkboxesWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 12px;
-  row-gap: 8px;
-}
-
-.checkboxLabel {
-  display: flex;
-  width: 112px;
-  padding: 16px 18px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  border-radius: 12px;
-  border: 1px solid var(--Gray-light);
-  mix-blend-mode: multiply;
-  transition: border-color var(--Animation_cubic);
-}
-.checkboxLabel.checked {
-  border-color: var(--Button);
-}
-
-.checkboxContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.checkboxInput {
-  display: none;
 }

@@ -1,29 +1,45 @@
 import { useState } from 'react';
+import FilterFieldset from '../FilterFieldset/FilterFieldset.jsx';
 import sprite from '../../../assets/icons/sprite.svg';
 import styles from './FilterForm.module.css';
-import Icon from '../../Icon/Icon.jsx';
-import HrLine from '../../HrLine/HrLine.jsx';
+import SubmitBtn from '../../Buttons/SubmitBtn/SubmitBtn.jsx';
+
+const equipment = {
+  AC: false,
+  Transmission: false,
+  Kitchen: false,
+  TV: false,
+  Bathroom: false,
+};
+
+const vehicleType = {
+  alcove: 'Alcove',
+  fullyIntegrated: 'Fully Integrated',
+  panelTruck: 'Van',
+};
 
 const FilterForm = () => {
   const [location, setLocation] = useState('Kyiv, Ukraine');
-  const [equipment, setEquipment] = useState({
-    AC: false,
-    Transmission: false,
-    Kitchen: false,
-    TV: false,
-    Bathroom: false,
-  });
 
-  const iconColor = location.trim() === '' ? 'emptyInput' : 'fillInInput';
+  const [selectedCheckboxValues, setSelectedCheckboxValues] =
+    useState(equipment);
+  const [selectedRadioValue, setSelectedRadioValue] = useState('');
 
-  const handleEquipmentChange = event => {
-    const { name } = event.target;
-    console.log('name: ', name);
+  const handleCheckboxChange = item => {
+    setSelectedCheckboxValues(prev => ({
+      ...prev,
+      [item]: !prev[item],
+    }));
+  };
 
-    setEquipment(prev => ({ ...prev, [name]: !prev[name] }));
+  const handleRadioChange = item => {
+    setSelectedRadioValue(item);
   };
 
   const handleSubmit = () => {};
+
+  const iconColor = location.trim() === '' ? 'emptyInput' : 'fillInInput';
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.locationWrapper}>
@@ -46,45 +62,29 @@ const FilterForm = () => {
         </label>
       </div>
 
-      <p className={styles.filtersTitle}>Filters</p>
+      <div className={styles.filterWrapper}>
+        <p className={styles.filtersTitle}>Filters</p>
 
-      <div className={styles.equipmentWrapper}>
-        <h3 className={styles.equipmentTitle}>Vehicle equipment</h3>
-        <HrLine />
-        <div className={styles.checkboxesWrapper}>
-          {Object.keys(equipment).map(item => (
-            <label
-              key={item}
-              style={{ cursor: 'pointer' }}
-              className={`${styles.checkboxLabel} ${
-                equipment[item] ? styles['checked'] : ''
-              }`}
-            >
-              <input
-                type="checkbox"
-                name={item}
-                className={styles.checkboxInput}
-                onClick={handleEquipmentChange}
-              />
-              <div className={styles.checkboxContent}>
-                <Icon iconName={item.toLowerCase()} width={32} height={32} />
-                <span>{item}</span>
-              </div>
-            </label>
-          ))}
-        </div>
+        <FilterFieldset
+          type={'checkbox'}
+          options={equipment}
+          legend={'Vehicle equipment'}
+          handleChange={handleCheckboxChange}
+          selectedValues={selectedCheckboxValues}
+        />
+
+        <FilterFieldset
+          type={'radio'}
+          options={vehicleType}
+          legend={'Vehicle type'}
+          handleChange={handleRadioChange}
+          selectedValues={{ selected: selectedRadioValue }}
+        />
       </div>
 
-      <button
-        type="submit"
-        style={{
-          backgroundColor: '#FF5733',
-          color: '#fff',
-          padding: '10px 20px',
-        }}
-      >
+      <SubmitBtn handleSubmit={handleSubmit} ariaLabel={'Submit filter form'}>
         Search
-      </button>
+      </SubmitBtn>
     </form>
   );
 };
