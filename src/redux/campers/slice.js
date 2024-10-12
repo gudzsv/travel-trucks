@@ -6,6 +6,7 @@ const handlePending = state => {
 };
 
 const handleRejected = (state, action) => {
+  state.items = [];
   state.isLoading = false;
   state.error = action.payload;
 };
@@ -54,9 +55,7 @@ const campersSlice = createSlice({
         state.total = action.payload.total || 0;
       })
       .addCase(applyFilters.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-        // alert(action.payload);
+        handleRejected(state, action);
       });
   },
   // extraReducers: bundler => {

@@ -1,0 +1,23 @@
+.camperNotFoundWrapper {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--Gray-light);
+  display: flex;
+  justify-content: center;
+}
+
+.camperNotText {
+  position: absolute;
+  left: 26%;
+  top: 4%;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.camperNotTextDecoration {
+  color: var(--Gray-light);
+}
+
+.camperNotFoundImage {
+  border-radius: 20px;
+}

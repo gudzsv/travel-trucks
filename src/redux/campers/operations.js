@@ -31,7 +31,6 @@ export const applyFilters = createAsyncThunk(
   'filters/applyFilters',
   async (filters, thunkAPI) => {
     try {
-      console.log('filters', filters);
       const params = { ...defaultParams, ...filters };
       const { data } = await apiClient.get('/campers', { params });
       return data;

@@ -4,6 +4,7 @@ import CamperCard from '../CamperCard/CamperCard.jsx';
 import styles from './CamperList.module.css';
 import { fetchCampers } from '../../../redux/campers/operations.js';
 import { selectTotalCampers } from '../../../redux/campers/selectors.js';
+import CampersNorFound from '../CampersNorFound/CampersNorFound.jsx';
 
 let limit = 4;
 let limitSequence = 4;
@@ -22,9 +23,12 @@ const CamperList = ({ campers }) => {
 
   return (
     <section className={styles.camperListSection}>
-      {campers.map(camper => (
-        <CamperCard key={camper.id} camper={camper} />
-      ))}
+      {campers.length === 0 ? (
+        <CampersNorFound />
+      ) : (
+        campers.map(camper => <CamperCard key={camper.id} camper={camper} />)
+      )}
+
       <LoadMoreBtn onClick={handleMore} disabled={limit >= totalCampers}>
         Load more
       </LoadMoreBtn>
