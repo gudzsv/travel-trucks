@@ -3,6 +3,10 @@ import FilterFieldset from '../FilterFieldset/FilterFieldset.jsx';
 import sprite from '../../../assets/icons/sprite.svg';
 import styles from './FilterForm.module.css';
 import SubmitBtn from '../../Buttons/SubmitBtn/SubmitBtn.jsx';
+import { useDispatch } from 'react-redux';
+
+import { transformObject } from '../../../helpers/helpers.js';
+import { applyFilters } from '../../../redux/campers/operations.js';
 
 const equipment = {
   AC: false,
@@ -19,11 +23,16 @@ const vehicleType = {
 };
 
 const FilterForm = () => {
+  const dispatch = useDispatch();
   const [location, setLocation] = useState('Kyiv, Ukraine');
 
   const [selectedCheckboxValues, setSelectedCheckboxValues] =
     useState(equipment);
   const [selectedRadioValue, setSelectedRadioValue] = useState('');
+
+  const handleLocationChange = e => {
+    setLocation(e.target.value.split(',')[0]);
+  };
 
   const handleCheckboxChange = item => {
     setSelectedCheckboxValues(prev => ({
@@ -36,7 +45,17 @@ const FilterForm = () => {
     setSelectedRadioValue(item);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const filters = {
+      location: location.split(',')[0],
+      ...transformObject(selectedCheckboxValues),
+      form: selectedRadioValue,
+    };
+
+    dispatch(applyFilters(filters));
+  };
 
   const iconColor = location.trim() === '' ? 'emptyInput' : 'fillInInput';
 
@@ -56,7 +75,8 @@ const FilterForm = () => {
             className={styles.locationInput}
             type="text"
             value={location}
-            onChange={e => setLocation(e.target.value)}
+            // onChange={e => setLocation(e.target.value)}
+            onChange={handleLocationChange}
             placeholder="City"
           />
         </label>

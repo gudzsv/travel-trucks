@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCampers } from './operations.js';
+import { applyFilters, fetchCampers } from './operations.js';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -31,18 +31,6 @@ const campersSlice = createSlice({
       }
     },
   },
-  // extraReducers: bundler => {
-  //   bundler
-  //     .addCase(fetchCampers.pending, handlePending)
-  //     .addCase(fetchCampers.fulfilled, (state, action) => {
-  //       state.isLoading = false;
-  //       state.error = null;
-
-  //       state.items = action.payload.items || [];
-  //       state.total = action.payload.total || 0;
-  //     })
-  //     .addCase(fetchCampers.rejected, handleRejected);
-  // },
   extraReducers: bundler => {
     bundler
       .addCase(fetchCampers.pending, handlePending)
@@ -50,19 +38,47 @@ const campersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        const updatedItems = action.payload.items.map(newItem => {
-          const existingItem = state.items.find(item => item.id === newItem.id);
-          return {
-            ...newItem,
-            favorite: existingItem?.favorite ?? newItem.favorite ?? false,
-          };
-        });
-
-        state.items = updatedItems;
+        state.items = action.payload.items || [];
         state.total = action.payload.total || 0;
       })
-      .addCase(fetchCampers.rejected, handleRejected);
+      .addCase(fetchCampers.rejected, handleRejected)
+      .addCase(applyFilters.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(applyFilters.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        state.items = action.payload.items || [];
+        state.total = action.payload.total || 0;
+      })
+      .addCase(applyFilters.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        // alert(action.payload);
+      });
   },
+  // extraReducers: bundler => {
+  //   bundler
+  //     .addCase(fetchCampers.pending, handlePending)
+  //     .addCase(fetchCampers.fulfilled, (state, action) => {
+  //       state.isLoading = false;
+  //       state.error = null;
+
+  //       const updatedItems = action.payload.items.map(newItem => {
+  //         const existingItem = state.items.find(item => item.id === newItem.id);
+  //         return {
+  //           ...newItem,
+  //           favorite: existingItem?.favorite ?? newItem.favorite ?? false,
+  //         };
+  //       });
+
+  //       state.items = updatedItems;
+  //       state.total = action.payload.total || 0;
+  //     })
+  //     .addCase(fetchCampers.rejected, handleRejected);
+  // },
 });
 
 export const { clearItems } = campersSlice.actions;

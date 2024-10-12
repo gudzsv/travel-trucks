@@ -13,7 +13,7 @@ const defaultParams = {
 
 export const fetchCampers = createAsyncThunk(
   'campers/fetchAll',
-  async (customParams = {}, { rejectWithValue }) => {
+  async (customParams = {}, thunkAPI) => {
     try {
       const params = { ...defaultParams, ...customParams };
       const { data } = await apiClient.get('/campers', {
@@ -22,7 +22,21 @@ export const fetchCampers = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const applyFilters = createAsyncThunk(
+  'filters/applyFilters',
+  async (filters, thunkAPI) => {
+    try {
+      console.log('filters', filters);
+      const params = { ...defaultParams, ...filters };
+      const { data } = await apiClient.get('/campers', { params });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
