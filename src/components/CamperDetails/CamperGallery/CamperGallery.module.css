@@ -1,0 +1,15 @@
+.camperGalleryList {
+  display: flex;
+  justify-content: flex-start;
+  gap: 48px;
+}
+.camperGalleryItem {
+  width: 292px;
+  height: 312px;
+}
+.camperGalleryImg {
+  border-radius: 10px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

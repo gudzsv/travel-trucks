@@ -39,3 +39,16 @@ export const applyFilters = createAsyncThunk(
     }
   }
 );
+
+export const fetchCamper = createAsyncThunk(
+  'campers/fetchOne',
+  async (camperId, thunkAPI) => {
+    try {
+      const { data } = await apiClient.get('/campers', { camperId });
+      console.log('!!!!!!!data: ', data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

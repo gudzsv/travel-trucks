@@ -1,8 +1,12 @@
+import CamperDetails from '../components/CamperDetails/CamperDetails.jsx';
+import Container from '../components/Container/Container.jsx';
 
 const CamperDetailsPage = () => {
-	return (
-		<div>CamperDetailsPage</div>
-	)
-}
+  return (
+    <Container>
+      <CamperDetails />
+    </Container>
+  );
+};
 
-export default CamperDetailsPage
+export default CamperDetailsPage;

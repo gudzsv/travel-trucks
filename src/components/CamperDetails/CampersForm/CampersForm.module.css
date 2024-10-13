@@ -1,0 +1,118 @@
+.camperFormSection {
+  width: 641px;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  border-radius: 10px;
+  border: 1px solid var(--Gray-light);
+}
+
+.camperFormHead {
+  display: flex;
+  width: 527px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  /* margin-top: 24px; */
+}
+
+.camperFormTitle {
+  color: var(--Main);
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.camperFormText {
+  color: var(--Gray);
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.camperFormContent {
+  display: flex;
+  width: 527px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  /* margin-bottom: 24px; */
+}
+.camperFormInput {
+  /* display: flex; */
+  width: 527px;
+  height: 60px;
+  padding: 18px;
+  /* flex-direction: column;
+  align-items: flex-start;
+  gap: 10px; */
+  border-radius: 12px;
+  background: var(--Inputs);
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.camperFormInput::placeholder {
+  color: var(--Gray);
+}
+
+.camperFormTextArea {
+  /* display: flex; */
+  width: 527px;
+  height: 118px;
+  padding: 18px;
+  /* flex-direction: column;
+  align-items: flex-start;
+  gap: 12px; */
+  border-radius: 12px;
+  background-color: var(--Inputs);
+
+  /* all: unset; */
+  /* або */
+  margin: 0;
+  /* padding: 0; */
+  border: none;
+  outline: none;
+  /* background: none; */
+  /* font: inherit; */
+  resize: none;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.camperFormTextArea::placeholder {
+  color: var(--Gray);
+}
+
+.calendarInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.errorMessage {
+  color: var(--Button-Hover);
+  padding: 8px;
+}
+
+.camperFormBtn {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}

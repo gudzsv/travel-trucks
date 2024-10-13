@@ -1,0 +1,28 @@
+.camperDetailsWrapper {
+  padding: 48px 0;
+}
+
+.camperDetailsGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px 0;
+}
+
+.camperDetailsText {
+  color: var(--Text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 1312px;
+}
+
+
+.tabWrapper {
+  display: flex;
+  gap: 40px;
+  padding: 44px 0;
+  width: 100%;
+}

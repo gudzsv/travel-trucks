@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router';
-
+import { ToastContainer } from 'react-toastify';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import { lazy, Suspense } from 'react';
 import Loader from './components/Loader/Loader.jsx';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage.jsx'));
@@ -21,6 +22,7 @@ function App() {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer />
     </Suspense>
   );
 }

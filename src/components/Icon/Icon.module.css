@@ -21,3 +21,12 @@
   z-index: 1;
   margin-right: 8px;
 }
+.reviewStar {
+  color: aqua;
+}
+.starFilled {
+  fill: var(--Rating);
+}
+.starEmpty {
+  fill: var(--Badges);
+}

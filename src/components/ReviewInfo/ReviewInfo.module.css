@@ -1,0 +1,21 @@
+.camperCardHeaderBottom {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  margin-top: 8px;
+}
+
+.camperCardHeaderBottomItem {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.camperCardRating:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.camperCardLocation {
+  cursor: default;
+}

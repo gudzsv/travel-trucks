@@ -4,6 +4,7 @@ import CamperEquipment from '../CamperEquipment/CamperEquipment.jsx';
 import styles from './CamperCard.module.css';
 import { toggleFavorite } from '../../../redux/campers/slice.js';
 import { useDispatch } from 'react-redux';
+import ReviewInfo from '../../ReviewInfo/ReviewInfo.jsx';
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
@@ -27,8 +28,6 @@ const CamperCard = ({ camper }) => {
     adults,
     favorite,
   } = camper;
-
-  const totalReviews = reviews.length;
 
   const handleToggleFavorite = () => {
     const newFavoriteStatus = !favorite;
@@ -66,24 +65,7 @@ const CamperCard = ({ camper }) => {
             </div>
           </div>
 
-          <ul className={styles.camperCardHeaderBottom}>
-            <li className={styles.camperCardHeaderBottomItem}>
-              <Icon
-                className="camperCardRating"
-                isActive={rating > 0}
-                iconName="rating"
-                width={16}
-                height={16}
-              />
-              <span className={styles.camperCardRating}>
-                {`${rating} (${totalReviews} Reviews)`}
-              </span>
-            </li>
-            <li className={styles.camperCardHeaderBottomItem}>
-              <Icon iconName="location" width={16} height={16} />
-              <span className={styles.camperCardLocation}>{location}</span>
-            </li>
-          </ul>
+          <ReviewInfo reviews={reviews} rating={rating} location={location} />
         </header>
         <p className={styles.camperCardDescription}>{description}</p>
         <CamperEquipment
