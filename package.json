@@ -25,6 +25,10 @@
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.6",
     "redux-persist": "^6.0.0",
+    "sharp": "^0.33.5",
+    "svgo": "^3.3.2",
+    "vite-plugin-full-reload": "^1.2.0",
+    "vite-plugin-image-optimizer": "^1.1.8",
     "yup": "^1.4.0"
   },
   "devDependencies": {
