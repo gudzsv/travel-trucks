@@ -75,7 +75,6 @@ const FilterForm = () => {
             className={styles.locationInput}
             type="text"
             value={location}
-            // onChange={e => setLocation(e.target.value)}
             onChange={handleLocationChange}
             placeholder="City"
           />

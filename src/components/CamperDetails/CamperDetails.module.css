@@ -19,10 +19,8 @@
   max-width: 1312px;
 }
 
-
 .tabWrapper {
   display: flex;
-  gap: 40px;
+  justify-content: space-between;
   padding: 44px 0;
-  width: 100%;
 }

@@ -4,7 +4,7 @@ import styles from './Reviews.module.css';
 const Reviews = ({ camper }) => {
   const maxStars = 5;
   return (
-    <article>
+    <article className={styles.reviewArticle}>
       <ul className={styles.reviewList}>
         {camper.reviews.map((item, index) => (
           <li className={styles.reviewItem} key={index + item.reviewer_name}>
@@ -24,7 +24,6 @@ const Reviews = ({ camper }) => {
                             ? 'starFilled'
                             : 'starEmpty'
                         }
-                        // className="reviewStar"
                       />
                     </span>
                   ))}

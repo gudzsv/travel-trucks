@@ -8,11 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 
-// Схема валідації
 const formSchema = yup.object().shape({
   name: yup.string().required('Name is required'),
   email: yup.string().email('Invalid email').required('Email is required'),
-  date: yup.date().required('Booking date is required'), // Змінено на yup.date()
+  date: yup.date().required('Booking date is required'),
   comment: yup.string().required('Comment is required'),
 });
 
@@ -30,7 +29,7 @@ const CampersForm = () => {
     defaultValues: {
       email: '',
       name: '',
-      date: null, // Початкове значення - null
+      date: null,
       comment: '',
     },
     resolver: yupResolver(formSchema),
@@ -84,6 +83,7 @@ const CampersForm = () => {
           <label>
             <DatePicker
               selected={selectedDate}
+              shouldCloseOnSelect={true}
               onChange={inputDate => {
                 setSelectedDate(inputDate);
                 setValue('date', inputDate);

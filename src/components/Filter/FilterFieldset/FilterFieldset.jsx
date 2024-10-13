@@ -46,7 +46,11 @@ const FilterFieldset = ({
                 height={32}
               />
               <span className={styles.contentText}>
-                {type === 'checkbox' ? item : options[item]}
+                {type !== 'checkbox'
+                  ? options[item]
+                  : item === 'Transmission'
+                  ? 'Automatic'
+                  : item}
               </span>
             </div>
           </label>
