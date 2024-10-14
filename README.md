@@ -3,7 +3,7 @@
  💼 Project Overview
 The Camper Rental Platform is built with modern tools to ensure the best possible user experience. Our platform makes finding and renting a campervan as easy as a few clicks.
 
-<!-- Replace with an actual image or screenshot -->
+
 
 Tech Stack
 ⚡ Vite — lightning-fast development and optimized builds.
@@ -26,6 +26,7 @@ Review & Rate: After your adventure, leave a review and share your experience wi
 
 
 👤 Author
+
 Developed by Serhii Hudzenko
 
 Email: gudzsvmail@gmail.com

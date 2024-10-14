@@ -5,6 +5,8 @@ import styles from './CamperList.module.css';
 import { fetchCampers } from '../../../redux/campers/operations.js';
 import { selectTotalCampers } from '../../../redux/campers/selectors.js';
 import CampersNorFound from '../CampersNorFound/CampersNorFound.jsx';
+import { selectFavorites } from '../../../redux/favorites/selectors.js';
+import { selectFilters } from '../../../redux/filters/selectors.js';
 
 let limit = 4;
 let limitSequence = 4;
@@ -14,10 +16,16 @@ const CamperList = ({ campers }) => {
 
   const totalCampers = useSelector(selectTotalCampers);
 
+  const favorites = useSelector(selectFavorites);
+
+  const savedFilters = useSelector(selectFilters);
+
+  const isFavorite = camperId => favorites.includes(camperId);
+
   const handleMore = () => {
     if (limit < totalCampers) {
       limit += limitSequence;
-      dispatch(fetchCampers({ limit }));
+      dispatch(fetchCampers({ ...savedFilters, limit }));
     }
   };
 
@@ -26,7 +34,12 @@ const CamperList = ({ campers }) => {
       {campers.length === 0 ? (
         <CampersNorFound />
       ) : (
-        campers.map(camper => <CamperCard key={camper.id} camper={camper} />)
+        campers.map(camper => (
+          <CamperCard
+            key={camper.id}
+            camper={{ ...camper, favorite: isFavorite(camper.id) }}
+          />
+        ))
       )}
 
       <LoadMoreBtn onClick={handleMore} disabled={limit >= totalCampers}>

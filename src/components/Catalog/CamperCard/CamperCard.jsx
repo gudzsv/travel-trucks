@@ -2,9 +2,10 @@ import OpenPageBtn from '../../Buttons/OpenPageBtn/OpenPageBtn.jsx';
 import Icon from '../../Icon/Icon.jsx';
 import CamperEquipment from '../CamperEquipment/CamperEquipment.jsx';
 import styles from './CamperCard.module.css';
-import { toggleFavorite } from '../../../redux/campers/slice.js';
+
 import { useDispatch } from 'react-redux';
 import ReviewInfo from '../../ReviewInfo/ReviewInfo.jsx';
+import { toggleFavorite } from '../../../redux/favorites/slice.js';
 
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
@@ -30,8 +31,7 @@ const CamperCard = ({ camper }) => {
   } = camper;
 
   const handleToggleFavorite = () => {
-    const newFavoriteStatus = !favorite;
-    dispatch(toggleFavorite({ id, favorite: newFavoriteStatus }));
+    dispatch(toggleFavorite(id));
   };
 
   return (

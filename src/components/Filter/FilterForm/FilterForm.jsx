@@ -4,9 +4,9 @@ import sprite from '../../../assets/icons/sprite.svg';
 import styles from './FilterForm.module.css';
 import SubmitBtn from '../../Buttons/SubmitBtn/SubmitBtn.jsx';
 import { useDispatch } from 'react-redux';
-
 import { transformObject } from '../../../helpers/helpers.js';
-import { applyFilters } from '../../../redux/campers/operations.js';
+import { fetchCampers } from '../../../redux/campers/operations.js';
+import { clearFilter, setFilter } from '../../../redux/filters/slice.js';
 
 const equipment = {
   AC: false,
@@ -54,7 +54,11 @@ const FilterForm = () => {
       form: selectedRadioValue,
     };
 
-    dispatch(applyFilters(filters));
+    dispatch(clearFilter());
+
+    dispatch(setFilter(filters));
+
+    dispatch(fetchCampers(filters));
   };
 
   const iconColor = location.trim() === '' ? 'emptyInput' : 'fillInInput';

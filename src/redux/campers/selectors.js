@@ -1,10 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectLoading = state => state.camper.isLoading;
+export const selectLoading = state => state.campers.isLoading;
 
-export const selectAllCampers = state => state.camper.items;
+export const selectAllCampers = state => state.campers.items;
 
-export const selectTotalCampers = state => state.camper.total;
+export const selectTotalCampers = state => state.campers.total;
 
 export const selectCamperById = createSelector(
   [selectAllCampers, (state, id) => id],

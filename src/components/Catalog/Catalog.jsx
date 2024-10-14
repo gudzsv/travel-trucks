@@ -7,7 +7,7 @@ import {
 } from '../../redux/campers/selectors.js';
 import { fetchCampers } from '../../redux/campers/operations.js';
 import Loader from '../Loader/Loader.jsx';
-import { clearItems } from '../../redux/campers/slice.js';
+import { clearFilter } from '../../redux/filters/slice.js';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const Catalog = () => {
   const loading = useSelector(selectLoading);
 
   useEffect(() => {
-    if (!campers) {
-      dispatch(clearItems());
+    if (!campers || campers.length === 0) {
+      dispatch(clearFilter());
       dispatch(fetchCampers());
     }
   }, [dispatch, campers]);

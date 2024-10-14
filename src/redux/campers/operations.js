@@ -27,19 +27,6 @@ export const fetchCampers = createAsyncThunk(
   }
 );
 
-export const applyFilters = createAsyncThunk(
-  'filters/applyFilters',
-  async (filters, thunkAPI) => {
-    try {
-      const params = { ...defaultParams, ...filters };
-      const { data } = await apiClient.get('/campers', { params });
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const fetchCamper = createAsyncThunk(
   'campers/fetchOne',
   async (camperId, thunkAPI) => {
