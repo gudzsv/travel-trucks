@@ -28,8 +28,11 @@ The Camper Rental Platform is built with modern tools to ensure the best possibl
 ## 👤 Author
 
   Developed by Serhii Hudzenko
+
   Email: gudzsvmail@gmail.com
+
   GitHub: Serhii Hudzenko
+
   ***Feel free to reach out for any questions or collaboration opportunities!***
 
 ## 📝 License
