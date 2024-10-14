@@ -6,23 +6,23 @@ The Camper Rental Platform is built with modern tools to ensure the best possibl
 
 
 ## Tech Stack
-⚡ **Vite** — lightning-fast development and optimized builds.
-⚛️ **React** — for building dynamic user interfaces.
-🌍 **React Router** — to manage navigation across pages.
-🎯 **Redux Toolkit** — centralized state management for better performance and scalability.
-🛠️ **React Hook Form & Yup** — simple and powerful form validation.
-📅 **React Datepicker** — intuitive date selection for bookings.
-🖌️ **CSS Modules** — scoped styling for better maintainability.
+- ⚡ **Vite** — lightning-fast development and optimized builds.
+- ⚛️ **React** — for building dynamic user interfaces.
+- 🌍 **React Router** — to manage navigation across pages.
+- 🎯 **Redux Toolkit** — centralized state management for better performance and scalability.
+- 🛠️ **React Hook Form & Yup** — simple and powerful form validation.
+- 📅 **React Datepicker** — intuitive date selection for bookings.
+- 🖌️ **CSS Modules** — scoped styling for better maintainability.
 ## 🎯 How to Use
-**Browse Campers:** Use our filters to search for campervans by location, ratings, and available dates.
-**Check Availability:** View real-time availability and make your reservation with just a few clicks.
-**Book Your Camper:** Choose your preferred camper, select booking dates, and confirm the rental.
-**Review & Rate:** After your adventure, leave a review and share your experience with other users.
+- **Browse Campers:** Use our filters to search for campervans by location, ratings, and available dates.
+- **Check Availability:** View real-time availability and make your reservation with just a few clicks.
+- **Book Your Camper:** Choose your preferred camper, select booking dates, and confirm the rental.
+- **Review & Rate:** After your adventure, leave a review and share your experience with other users.
 ## 📷 Screenshot
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
+![alt text](./assets/image.png)
+![alt text](./assets/image-1.png)
+![alt text](./assets/image-2.png)
+![alt text](./assets/image-3.png)
 
 
 ## 👤 Author
