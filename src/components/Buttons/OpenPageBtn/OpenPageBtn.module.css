@@ -3,7 +3,7 @@
   padding: 16px 16px;
   border-radius: 200px;
   background-color: var(--Button);
-  max-width: 166px;
+  width: 166px;
   transition: background-color var(--Animation_cubic);
 }
 
