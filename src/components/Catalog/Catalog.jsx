@@ -3,6 +3,7 @@ import CamperList from './CamperList/CamperList.jsx';
 import { useEffect } from 'react';
 import {
   selectAllCampers,
+  selectError,
   selectLoading,
 } from '../../redux/campers/selectors.js';
 import { fetchCampers } from '../../redux/campers/operations.js';
@@ -16,12 +17,14 @@ const Catalog = () => {
 
   const loading = useSelector(selectLoading);
 
+  const error = useSelector(selectError);
+
   useEffect(() => {
-    if (!campers || campers.length === 0) {
+    if ((!campers || campers.length === 0) && error === null) {
       dispatch(clearFilter());
       dispatch(fetchCampers());
     }
-  }, [dispatch, campers]);
+  }, [dispatch, campers, error]);
 
   return loading ? <Loader /> : <CamperList campers={campers} />;
 };

@@ -3,6 +3,7 @@ import { fetchCamper, fetchCampers } from './operations.js';
 
 const handlePending = state => {
   state.isLoading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {

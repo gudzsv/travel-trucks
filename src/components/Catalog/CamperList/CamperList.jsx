@@ -3,7 +3,10 @@ import LoadMoreBtn from '../../Buttons/LoadMoreBtn/LoadMoreBtn.jsx';
 import CamperCard from '../CamperCard/CamperCard.jsx';
 import styles from './CamperList.module.css';
 import { fetchCampers } from '../../../redux/campers/operations.js';
-import { selectTotalCampers } from '../../../redux/campers/selectors.js';
+import {
+  selectError,
+  selectTotalCampers,
+} from '../../../redux/campers/selectors.js';
 import CampersNorFound from '../CampersNorFound/CampersNorFound.jsx';
 import { selectFavorites } from '../../../redux/favorites/selectors.js';
 import { selectFilters } from '../../../redux/filters/selectors.js';
@@ -20,6 +23,8 @@ const CamperList = ({ campers }) => {
 
   const savedFilters = useSelector(selectFilters);
 
+  const error = useSelector(selectError);
+
   const isFavorite = camperId => favorites.includes(camperId);
 
   const handleMore = () => {
@@ -31,7 +36,7 @@ const CamperList = ({ campers }) => {
 
   return (
     <section className={styles.camperListSection}>
-      {campers.length === 0 ? (
+      {error !== null ? (
         <CampersNorFound />
       ) : (
         campers.map(camper => (
