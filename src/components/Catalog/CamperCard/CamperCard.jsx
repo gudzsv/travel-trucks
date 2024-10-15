@@ -10,35 +10,15 @@ import { toggleFavorite } from '../../../redux/favorites/slice.js';
 const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
 
-  const {
-    id,
-    gallery,
-    name,
-    price,
-    rating,
-    location,
-    description,
-    reviews,
-    transmission,
-    engine,
-    AC,
-    bathroom,
-    kitchen,
-    TV,
-    radio,
-    adults,
-    favorite,
-  } = camper;
-
   const handleToggleFavorite = () => {
-    dispatch(toggleFavorite(id));
+    dispatch(toggleFavorite(camper.id));
   };
 
   return (
     <article className={styles.camperCardArticle}>
       <img
-        src={gallery[0].thumb}
-        alt={`Image of ${name}`}
+        src={camper.gallery[0].thumb}
+        alt={`Image of ${camper.name}`}
         width={292}
         height={320}
         className={styles.camperCardImage}
@@ -47,11 +27,11 @@ const CamperCard = ({ camper }) => {
       <div className={styles.camperCardContent}>
         <header className={styles.camperCardHeader}>
           <div className={styles.camperCardHeaderTop}>
-            <h2 className={styles.camperCardTitle}>{name}</h2>
+            <h2 className={styles.camperCardTitle}>{camper.name}</h2>
             <div className={styles.camperCardPriceFavoriteWrapper}>
-              <span className={styles.camperCardPrice}>{`€ ${price.toFixed(
-                2
-              )}`}</span>
+              <span
+                className={styles.camperCardPrice}
+              >{`€${camper.price.toFixed(2)}`}</span>
               <Icon
                 iconName="favorite"
                 width={24}
@@ -59,28 +39,23 @@ const CamperCard = ({ camper }) => {
                 className="camperCardFavorite"
                 role="button"
                 onClick={handleToggleFavorite}
-                isActive={favorite}
-                aria-pressed={favorite}
+                isActive={camper.favorite}
+                aria-pressed={camper.favorite}
               />
             </div>
           </div>
 
-          <ReviewInfo reviews={reviews} rating={rating} location={location} />
+          <ReviewInfo
+            reviews={camper.reviews}
+            rating={camper.rating}
+            location={camper.location}
+          />
         </header>
-        <p className={styles.camperCardDescription}>{description}</p>
-        <CamperEquipment
-          transmission={transmission}
-          engine={engine}
-          AC={AC}
-          bathroom={bathroom}
-          kitchen={kitchen}
-          TV={TV}
-          radio={radio}
-          adults={adults}
-        />
+        <p className={styles.camperCardDescription}>{camper.description}</p>
+        <CamperEquipment camper={camper} />
         <OpenPageBtn
           open="new"
-          url={`/catalog/${id}`}
+          url={`/catalog/${camper.id}`}
           ariaLabel="Open camper details page"
         >
           Show More

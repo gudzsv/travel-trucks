@@ -1,6 +1,4 @@
 import { useForm, Controller } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import FilterFieldset from '../FilterFieldset/FilterFieldset.jsx';
 import sprite from '../../../assets/icons/sprite.svg';
 import styles from './FilterForm.module.css';
@@ -10,26 +8,10 @@ import { transformObject } from '../../../helpers/helpers.js';
 import { fetchCampers } from '../../../redux/campers/operations.js';
 import { clearFilter, setFilter } from '../../../redux/filters/slice.js';
 
-const schema = yup.object().shape({
-  location: yup.string().required('Location is required'),
-  equipment: yup
-    .object()
-    .test('isChecked', 'Please select at least one equipment', value =>
-      Object.values(value).some(v => v)
-    ),
-  vehicleType: yup.string().required('Please select a vehicle type'),
-});
-
 const FilterForm = () => {
   const dispatch = useDispatch();
 
-  const {
-    handleSubmit,
-    control,
-    watch,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
+  const { handleSubmit, control, watch } = useForm({
     defaultValues: {
       location: 'Kyiv, Ukraine',
       equipment: {
@@ -82,9 +64,6 @@ const FilterForm = () => {
               />
             )}
           />
-          {errors.location && (
-            <p className="errorMessage">{errors.location.message}</p>
-          )}
         </label>
       </div>
 
@@ -110,9 +89,6 @@ const FilterForm = () => {
             />
           )}
         />
-        {errors.equipment && (
-          <p className="errorMessage">{errors.equipment.message}</p>
-        )}
 
         <Controller
           name="vehicleType"
@@ -131,9 +107,6 @@ const FilterForm = () => {
             />
           )}
         />
-        {errors.vehicleType && (
-          <p className="errorMessage">{errors.vehicleType.message}</p>
-        )}
       </div>
 
       <SubmitBtn

@@ -1,37 +1,28 @@
 import Icon from '../../Icon/Icon.jsx';
 import styles from './CamperEquipment.module.css';
 
-const CamperEquipment = ({
-  transmission,
-  engine,
-  AC,
-  bathroom,
-  kitchen,
-  TV,
-  radio,
-  adults,
-}) => {
+const CamperEquipment = ({ camper }) => {
   return (
     <ul className={styles.camperEquipment}>
-      {transmission && (
+      {camper.transmission && (
         <li
           className={styles.camperEquipmentItem}
-          aria-label={`Transmission: ${transmission}`}
+          aria-label={`Transmission: ${camper.transmission}`}
         >
           <Icon iconName="transmission" width={20} height={20} />
-          {transmission}
+          {camper.transmission}
         </li>
       )}
-      {engine && (
+      {camper.engine && (
         <li
           className={styles.camperEquipmentItem}
-          aria-label={`Engine ${engine}`}
+          aria-label={`Engine ${camper.engine}`}
         >
           <Icon iconName="engine" width={20} height={20} />
-          {engine}
+          {camper.engine}
         </li>
       )}
-      {AC && (
+      {camper.AC && (
         <li
           className={styles.camperEquipmentItem}
           aria-label="Air conditioning available"
@@ -40,7 +31,7 @@ const CamperEquipment = ({
           AC
         </li>
       )}
-      {kitchen && (
+      {camper.kitchen && (
         <li
           className={styles.camperEquipmentItem}
           aria-label="Kitchen available"
@@ -49,13 +40,13 @@ const CamperEquipment = ({
           Kitchen
         </li>
       )}
-      {TV && (
+      {camper.TV && (
         <li className={styles.camperEquipmentItem} aria-label="TV available">
           <Icon iconName="tv" width={20} height={20} />
           TV
         </li>
       )}
-      {bathroom && (
+      {camper.bathroom && (
         <li
           className={styles.camperEquipmentItem}
           aria-label="Bathroom available"
@@ -65,15 +56,48 @@ const CamperEquipment = ({
         </li>
       )}
 
-      {radio && (
+      {camper.radio && (
         <li className={styles.camperEquipmentItem} aria-label="Radio available">
           <Icon iconName="radio" width={20} height={20} />
           Radio
         </li>
       )}
-      {adults && (
-        <li className={styles.camperEquipmentItem} aria-label="Radio available">
+      {camper.adults && (
+        <li
+          className={styles.camperEquipmentItem}
+          aria-label="2 adults available"
+        >
           <Icon iconName="adults" width={20} height={20} />2 adults
+        </li>
+      )}
+      {camper.refrigerator && (
+        <li
+          className={styles.camperEquipmentItem}
+          aria-label="Refrigerator available"
+        >
+          <Icon iconName="refrigerator" width={20} height={20} />
+          Refrigerator
+        </li>
+      )}
+      {camper.microwave && (
+        <li
+          className={styles.camperEquipmentItem}
+          aria-label="Microwave available"
+        >
+          <Icon iconName="microwave" width={20} height={20} />
+          Microwave
+        </li>
+      )}
+      {camper.gas && (
+        <li className={styles.camperEquipmentItem} aria-label="Gas available">
+          <Icon iconName="gas" width={20} height={20} />
+          Gas
+        </li>
+      )}
+      {camper.water && (
+        <li className={styles.camperEquipmentItem} aria-label="Water available">
+          <Icon iconName="water" width={20} height={20} />
+          Water
         </li>
       )}
     </ul>

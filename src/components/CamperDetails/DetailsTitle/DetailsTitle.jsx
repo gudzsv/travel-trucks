@@ -11,7 +11,7 @@ const DetailsTitle = ({ camper }) => {
           reviews={camper.reviews}
           location={camper.location}
         />
-        <span className={styles.detailsTitleText}>{`€ ${camper.price.toFixed(
+        <span className={styles.detailsTitleText}>{`€${camper.price.toFixed(
           2
         )}`}</span>
       </div>
