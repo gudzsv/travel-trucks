@@ -3,7 +3,7 @@ export const transformObject = obj => {
     const newKey = key.length > 2 ? key.toLowerCase() : key;
 
     if (key === 'Transmission') {
-      acc[newKey] = obj[key] ? 'automatic' : 'manual';
+      acc[newKey] = obj[key] ? 'automatic' : '';
       return acc;
     }
 
