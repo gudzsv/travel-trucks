@@ -46,10 +46,11 @@ const CamperList = ({ campers }) => {
           />
         ))
       )}
-
-      <LoadMoreBtn onClick={handleMore} disabled={limit >= totalCampers}>
-        Load more
-      </LoadMoreBtn>
+      {error === null && (
+        <LoadMoreBtn onClick={handleMore} disabled={limit >= totalCampers}>
+          Load more
+        </LoadMoreBtn>
+      )}
     </section>
   );
 };
