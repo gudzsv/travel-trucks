@@ -16,7 +16,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  /* margin-top: 24px; */
 }
 
 .camperFormTitle {
@@ -42,16 +41,11 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  /* margin-bottom: 24px; */
 }
 .camperFormInput {
-  /* display: flex; */
   width: 527px;
   height: 60px;
   padding: 18px;
-  /* flex-direction: column;
-  align-items: flex-start;
-  gap: 10px; */
   border-radius: 12px;
   background: var(--Inputs);
 
@@ -67,24 +61,15 @@
 }
 
 .camperFormTextArea {
-  /* display: flex; */
   width: 527px;
   height: 118px;
   padding: 18px;
-  /* flex-direction: column;
-  align-items: flex-start;
-  gap: 12px; */
   border-radius: 12px;
   background-color: var(--Inputs);
 
-  /* all: unset; */
-  /* або */
   margin: 0;
-  /* padding: 0; */
   border: none;
   outline: none;
-  /* background: none; */
-  /* font: inherit; */
   resize: none;
 
   font-family: 'Inter', sans-serif;

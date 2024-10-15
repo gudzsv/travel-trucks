@@ -21,6 +21,11 @@ html {
   transform: translate(-50%, -50%);
 }
 
+.errorMessage {
+  color: var(--Button-Hover);
+  padding: 8px;
+}
+
 body {
   font-family: 'Inter', sans-serif;
 }

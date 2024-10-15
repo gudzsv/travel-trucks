@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import FilterFieldset from '../FilterFieldset/FilterFieldset.jsx';
 import sprite from '../../../assets/icons/sprite.svg';
 import styles from './FilterForm.module.css';
@@ -8,63 +10,56 @@ import { transformObject } from '../../../helpers/helpers.js';
 import { fetchCampers } from '../../../redux/campers/operations.js';
 import { clearFilter, setFilter } from '../../../redux/filters/slice.js';
 
-const equipment = {
-  AC: false,
-  Transmission: false,
-  Kitchen: false,
-  TV: false,
-  Bathroom: false,
-};
-
-const vehicleType = {
-  alcove: 'Alcove',
-  fullyIntegrated: 'Fully Integrated',
-  panelTruck: 'Van',
-};
+const schema = yup.object().shape({
+  location: yup.string().required('Location is required'),
+  equipment: yup
+    .object()
+    .test('isChecked', 'Please select at least one equipment', value =>
+      Object.values(value).some(v => v)
+    ),
+  vehicleType: yup.string().required('Please select a vehicle type'),
+});
 
 const FilterForm = () => {
   const dispatch = useDispatch();
-  const [location, setLocation] = useState('Kyiv, Ukraine');
 
-  const [selectedCheckboxValues, setSelectedCheckboxValues] =
-    useState(equipment);
-  const [selectedRadioValue, setSelectedRadioValue] = useState('');
+  const {
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      location: 'Kyiv, Ukraine',
+      equipment: {
+        AC: false,
+        Transmission: false,
+        Kitchen: false,
+        TV: false,
+        Bathroom: false,
+      },
+      vehicleType: '',
+    },
+  });
 
-  const handleLocationChange = e => {
-    setLocation(e.target.value.split(',')[0]);
-  };
-
-  const handleCheckboxChange = item => {
-    setSelectedCheckboxValues(prev => ({
-      ...prev,
-      [item]: !prev[item],
-    }));
-  };
-
-  const handleRadioChange = item => {
-    setSelectedRadioValue(item);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
+  const onSubmit = data => {
     const filters = {
-      location: location.split(',')[0],
-      ...transformObject(selectedCheckboxValues),
-      form: selectedRadioValue,
+      location: data.location.split(',')[0],
+      ...transformObject(data.equipment),
+      form: data.vehicleType,
     };
 
     dispatch(clearFilter());
-
     dispatch(setFilter(filters));
-
     dispatch(fetchCampers(filters));
   };
 
-  const iconColor = location.trim() === '' ? 'emptyInput' : 'fillInInput';
+  const iconColor =
+    watch('location').trim() === '' ? 'emptyInput' : 'fillInInput';
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.locationWrapper}>
         <p className={styles.locationTitle}>Location</p>
         <label className={styles.locationInputLabel}>
@@ -75,37 +70,76 @@ const FilterForm = () => {
           >
             <use href={`${sprite}#location`}></use>
           </svg>
-          <input
-            className={styles.locationInput}
-            type="text"
-            value={location}
-            onChange={handleLocationChange}
-            placeholder="City"
+          <Controller
+            name="location"
+            control={control}
+            render={({ field }) => (
+              <input
+                className={styles.locationInput}
+                type="text"
+                {...field}
+                placeholder="City"
+              />
+            )}
           />
+          {errors.location && (
+            <p className="errorMessage">{errors.location.message}</p>
+          )}
         </label>
       </div>
 
       <div className={styles.filterWrapper}>
         <p className={styles.filtersTitle}>Filters</p>
 
-        <FilterFieldset
-          type={'checkbox'}
-          options={equipment}
-          legend={'Vehicle equipment'}
-          handleChange={handleCheckboxChange}
-          selectedValues={selectedCheckboxValues}
+        <Controller
+          name="equipment"
+          control={control}
+          render={({ field }) => (
+            <FilterFieldset
+              type={'checkbox'}
+              options={{
+                AC: 'AC',
+                Transmission: 'Automatic',
+                Kitchen: 'Kitchen',
+                TV: 'TV',
+                Bathroom: 'Bathroom',
+              }}
+              legend={'Vehicle equipment'}
+              handleChange={field.onChange}
+              selectedValues={field.value}
+            />
+          )}
         />
+        {errors.equipment && (
+          <p className="errorMessage">{errors.equipment.message}</p>
+        )}
 
-        <FilterFieldset
-          type={'radio'}
-          options={vehicleType}
-          legend={'Vehicle type'}
-          handleChange={handleRadioChange}
-          selectedValues={{ selected: selectedRadioValue }}
+        <Controller
+          name="vehicleType"
+          control={control}
+          render={({ field }) => (
+            <FilterFieldset
+              type={'radio'}
+              options={{
+                panelTruck: 'Van',
+                fullyIntegrated: 'Fully Integrated',
+                alcove: 'Alcove',
+              }}
+              legend={'Vehicle type'}
+              handleChange={field.onChange}
+              selectedValues={{ selected: field.value }}
+            />
+          )}
         />
+        {errors.vehicleType && (
+          <p className="errorMessage">{errors.vehicleType.message}</p>
+        )}
       </div>
 
-      <SubmitBtn handleSubmit={handleSubmit} ariaLabel={'Submit filter form'}>
+      <SubmitBtn
+        handleSubmit={handleSubmit(onSubmit)}
+        ariaLabel={'Submit filter form'}
+      >
         Search
       </SubmitBtn>
     </form>

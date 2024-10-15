@@ -14,47 +14,42 @@ const FilterFieldset = ({
       <legend className={styles.fieldsetLegend}>{legend}</legend>
       <HrLine />
       <div className={styles.inputsWrapper}>
-        {Object.keys(options).map(item => (
-          <label
-            key={item}
-            className={`${styles.label} ${
-              type === 'checkbox'
-                ? selectedValues[item]
-                  ? styles.checked
-                  : ''
-                : selectedValues.selected === item
-                ? styles.checked
-                : ''
-            }`}
-          >
-            <input
-              type={type}
-              name={item}
-              value={options[item]}
-              className={styles.input}
-              onChange={() => handleChange(item)}
-              checked={
-                type === 'checkbox'
-                  ? selectedValues[item] || false
-                  : selectedValues.selected === item
-              }
-            />
-            <div className={styles.contentWrapper}>
-              <Icon
-                iconName={item.toLocaleLowerCase()}
-                width={32}
-                height={32}
+        {Object.keys(options).map(item => {
+          const isChecked =
+            type === 'checkbox'
+              ? selectedValues[item] || false
+              : selectedValues.selected === item;
+
+          return (
+            <label
+              key={item}
+              className={`${styles.label} ${isChecked ? styles.checked : ''}`}
+            >
+              <input
+                type={type}
+                name={type !== 'checkbox' ? 'radioBtn' : item}
+                value={item}
+                className={styles.input}
+                onChange={e =>
+                  handleChange(
+                    type === 'checkbox'
+                      ? { ...selectedValues, [item]: e.target.checked }
+                      : item
+                  )
+                }
+                checked={isChecked}
               />
-              <span className={styles.contentText}>
-                {type !== 'checkbox'
-                  ? options[item]
-                  : item === 'Transmission'
-                  ? 'Automatic'
-                  : item}
-              </span>
-            </div>
-          </label>
-        ))}
+              <div className={styles.contentWrapper}>
+                <Icon
+                  iconName={item.toLocaleLowerCase()}
+                  width={32}
+                  height={32}
+                />
+                <span className={styles.contentText}>{options[item]}</span>
+              </div>
+            </label>
+          );
+        })}
       </div>
     </fieldset>
   );
