@@ -15,7 +15,7 @@ const CamperCard = ({ camper }) => {
   };
 
   return (
-    <article className={styles.camperCardArticle}>
+    <li className={styles.camperCardArticle}>
       <img
         src={camper.gallery[0].thumb}
         alt={`Image of ${camper.name}`}
@@ -61,7 +61,7 @@ const CamperCard = ({ camper }) => {
           Show More
         </OpenPageBtn>
       </div>
-    </article>
+    </li>
   );
 };
 

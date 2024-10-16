@@ -39,12 +39,14 @@ const CamperList = ({ campers }) => {
       {error !== null ? (
         <CampersNorFound />
       ) : (
-        campers.map(camper => (
-          <CamperCard
-            key={camper.id}
-            camper={{ ...camper, favorite: isFavorite(camper.id) }}
-          />
-        ))
+        <ul>
+          {campers.map(camper => (
+            <CamperCard
+              key={camper.id}
+              camper={{ ...camper, favorite: isFavorite(camper.id) }}
+            />
+          ))}
+        </ul>
       )}
       {error === null && (
         <LoadMoreBtn onClick={handleMore} disabled={limit >= totalCampers}>

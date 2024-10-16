@@ -21,7 +21,6 @@ const Catalog = () => {
   const error = useSelector(selectError);
 
   const filters = useSelector(selectFilters);
-  console.log('filters: ', filters.length);
 
   useEffect(() => {
     if (
